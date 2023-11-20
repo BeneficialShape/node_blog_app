@@ -28,7 +28,7 @@ app.use(
 
 // database connection
 connectMongoDB(process.env.MONGO_URL)
-  .then(() => console.log("MONGODB CONNECTED"))
+  .then((c) => console.log(`Database Connected to ${c.connection.host}`))
   .catch((e) => console.log("MONGODB CONNECTION ERROR", e));
 
 // blogRouter
