@@ -6,6 +6,7 @@ import {
   getAllBlogsHandler,
   editBlogHandler,
   deleteBlogHandler,
+  getBlogHandler,
 } from "../controllers/blog.js";
 
 const router = express.Router();
@@ -16,6 +17,6 @@ router.post("/create", createBlogHandler);
 
 router.get("/myblogs", userBlogsHandler);
 
-router.route("/myblogs/:blogId").put(editBlogHandler).delete(deleteBlogHandler);
+router.route("/myblogs/:blogId").get(getBlogHandler).put(editBlogHandler).delete(deleteBlogHandler);
 
 export default router;

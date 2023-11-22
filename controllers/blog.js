@@ -100,3 +100,19 @@ export const deleteBlogHandler = async (req, res) => {
       .json({ sucess: "false", message: "Server Error", error });
   }
 };
+
+export const getBlogHandler = async (req, res) => {
+  try {
+    const { blogId } = req.params;
+    const blog = await Blog.findById({ _id: blogId });
+    if (!blog)
+      return res
+        .status(404)
+        .json({ success: "false", message: "No such blog found!" });
+    return res.status(200).json({ success: "true", blog });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ sucess: "false", message: "Server Error", error });
+  }
+};
